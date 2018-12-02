@@ -7,12 +7,11 @@ class Ping extends Command {
         })
     }
 
-    exec(message) {
+    async exec(message) {
         const startTime = Date.now();
-        message.channel.send(`Pinging...`).then(msg => {
-            const endTime = Date.now();
-            msg.edit(`Pong! | Client Ping: ${endTime - startTime}ms | API Latency: ${Math.floor(this.client.pings[0])}ms`);
-        });
+        m = await message.channel.send(`Pinging...`);
+         const endTime = Date.now();
+         await m.edit(`Pong! | Client Ping: ${endTime - startTime}ms | API Latency: ${Math.floor(this.client.pings[0])}ms`);
     }
 }
 
